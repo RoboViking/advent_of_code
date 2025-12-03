@@ -13,8 +13,7 @@ def patternFind(start, end):
                 print(currentNum)
 
         start += 1
-        currentNum = str(start)
-    
+        currentNum = str(start)   
 
 def main():
     with open("day_2/input.txt", "r") as file:
@@ -24,7 +23,6 @@ def main():
             start, end = r.split("-")
             patternFind(int(start), int(end))
     print("Password: "+ str(password))
-
 
 if __name__ == "__main__":
     main()
