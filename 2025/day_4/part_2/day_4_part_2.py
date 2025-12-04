@@ -27,15 +27,25 @@ def main():
     
     row = len(grid)
     col = len(grid[0])
+    removedRolls = 0
+    Running = True
+    while Running:
+        goodRollsList = []
+        for i in range(row):
+            for j in range(col):
+                if grid[i][j] == '@':
+                    adjacentRolls = adjacentCellCheck(i, j)
+                    if adjacentRolls < 4:
+                        goodRollsList.append((i,j))
+            
+        if len(goodRollsList) == 0:
+            Running = False
+        else:
+            for cell in goodRollsList:
+                grid[cell[0]][cell[1]] = '.'
+                removedRolls += 1
     
-    for i in range(row):
-        for j in range(col):
-            if grid[i][j] == '@':
-                adjacentRolls = adjacentCellCheck(i, j)
-                if adjacentRolls < 4:
-                    goodRolls += 1
-    
-    print("Good rolls:", goodRolls)
+    print("Removed rolls:", removedRolls)
     
 
 if __name__ == "__main__":
